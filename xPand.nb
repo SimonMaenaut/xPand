@@ -65,7 +65,7 @@ cosmology.
 It allows for the calculation of perturbations for all types of Bianchi \
 (homogeneous) cosmologies, at any order and in several gauges. 
         
-Version 0.4.3   (9/9/2015)\
+Version 0.4.3   (04/03/2019)\
 \>", "Text",
  InitializationCell->True,
  FontSize->14],
@@ -138,7 +138,7 @@ Cell[TextData[{
   ButtonData->{
     URL["http://metric.iem.csic.es/Martin-Garcia/"], None}],
   FontSize->13],
- "\n\t\nIt is tested so far for xAct_1.0.5 and xPert_1.0.3, under Mathematica \
+ "\n\t\nIt is tested so far for xAct_1.1.3 and xPert_1.0.6, under Mathematica \
 7.0, 8.0, 9.0 and 10.0."
 }], "Text",
  InitializationCell->True,
@@ -157,7 +157,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"\"\<0.4.3\>\"", ",", 
      RowBox[{"{", 
-      RowBox[{"2015", ",", "09", ",", "09"}], "}"}]}], "}"}]}], 
+      RowBox[{"2019", ",", "03", ",", "04"}], "}"}]}], "}"}]}], 
   ";"}]], "Input",
  InitializationCell->True],
 
@@ -165,16 +165,16 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"xAct`xPand`$xTensorVersionExpected", "=", 
    RowBox[{"{", 
-    RowBox[{"\"\<1.1.2\>\"", ",", 
+    RowBox[{"\"\<1.1.3\>\"", ",", 
      RowBox[{"{", 
-      RowBox[{"2015", ",", "8", ",", "3"}], "}"}]}], "}"}]}], 
+      RowBox[{"2018", ",", "2", ",", "28"}], "}"}]}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"xAct`xPand`$xPertVersionExpected", "=", 
    RowBox[{"{", 
-    RowBox[{"\"\<1.0.5\>\"", ",", 
+    RowBox[{"\"\<1.0.6\>\"", ",", 
      RowBox[{"{", 
-      RowBox[{"2014", ",", "9", ",", "28"}], "}"}]}], "}"}]}], 
+      RowBox[{"2018", ",", "2", ",", "28"}], "}"}]}], "}"}]}], 
   ";"}]}], "Input",
  InitializationCell->True],
 
@@ -207,7 +207,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"Copyright", " ", 
       RowBox[{"(", "C", ")"}], " ", "2012"}], "-", 
-     RowBox[{"2018", " ", "Cyril", " ", "Pitrou"}]}], ",", " ", 
+     RowBox[{"2019", " ", "Cyril", " ", "Pitrou"}]}], ",", " ", 
     RowBox[{"Xavier", " ", "Roy", " ", "and", " ", "Obinna", " ", "Umeh"}]}], 
    " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
@@ -287,7 +287,7 @@ types) *)
 
 (* :Package Version: 0.4.3 *)
 
-(* :Copyright: Cyril Pitrou, Xavier Roy and Obinna Umeh (2012-2016) *)
+(* :Copyright: Cyril Pitrou, Xavier Roy and Obinna Umeh (2012-2019) *)
 
 (* :History: see xPand.History *)
 
@@ -961,8 +961,8 @@ with down indices.\>\""}], ";"}], "\[IndentingNewLine]",
 properties to tensors that are, at least, fully symmetric.\>\""}], ";"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
-    RowBox[{"*", " ", "ExtractComponents"}], " ", "**)"}], 
-   "\[IndentingNewLine]", "\n", 
+    RowBox[{"*", " ", "ExtractComponents"}], " ", "**)"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"ExtractComponents", "::", "invalidprojector"}], " ", "=", " ", 
@@ -1463,7 +1463,7 @@ Cell[BoxData[
      "\"\<$ListFieldsBackgroundOnly[h], with 'h' being the induced metric on \
 the hypersurfaces, is the list of fields that live on the background only. It \
 is automatically defined when calling the function SetSlicing.\>\""}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+   "\n", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"$ListFieldsPerturbedOnly", "::", "usage"}], "=", 
@@ -1554,9 +1554,9 @@ automatically defined when calling the function SetSlicing for Bianchi \
 space-times of type other then I. The presence as an argument of the induced \
 metric 'h' is reminiscent of the choice of the background slicing. \n\nThe \
 command nt[h] builds the symbol 'nth', so one can use nt[h][index,index] or, \
-equivalently, nth[index,index]. \n\nThe default printed form of \
-nt[h][-index,-index] is: '\!\(\*SubscriptBox[\(N\), \(index\\\ index\)]\)'.\>\
-\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+equivalently, nth[index,index]. \n\nThe default printed form of nt[h][i,i] \
+is: '\!\(\*SuperscriptBox[\(N\), \(ii\)]\)'.\>\""}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"av", "::", "usage"}], " ", "=", " ", 
@@ -2628,7 +2628,7 @@ Cell[BoxData[
                     RowBox[{"i", ",", "1", ",", "q"}], "}"}]}], "]"}]}]}], 
                "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}],
-    "\[IndentingNewLine]", "\n", 
+    "\n", "\[IndentingNewLine]", 
    RowBox[{"xTensorFormStart", "[", "Tensor", "]"}]}]}]], "Input",
  InitializationCell->True],
 
@@ -3434,7 +3434,7 @@ Cell[BoxData[{
  InitializationCell->True],
 
 Cell["", "Text"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -9984,33 +9984,41 @@ expression.\>\""}], "]"}]}], "/;",
                  RowBox[{"dim", "===", "4"}], "&&", 
                  RowBox[{"BianchiBool", "[", "SpaceTimeType", "]"}]}], "]"}], 
                ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", 
+                RowBox[{
+                "I", " ", "have", " ", "exchanged", " ", "the", " ", 
+                 "position", " ", "of", " ", "indices", " ", "with", " ", 
+                 RowBox[{"up", ".", " ", "Did"}], " ", "not", " ", "check", 
+                 " ", "if", " ", "this", " ", 
+                 RowBox[{"works", ".", " ", "10"}], " ", "march", " ", 
+                 "2019.", " ", "To", " ", "check", " ", 
+                 RowBox[{"TODO", "."}]}], "*)"}], "\[IndentingNewLine]", 
                RowBox[{
                 RowBox[{"DefTensor", "[", 
                  RowBox[{
                   RowBox[{"nth", "[", 
-                   RowBox[{
-                    RowBox[{"-", "ind1"}], ",", 
-                    RowBox[{"-", "ind2"}]}], "]"}], ",", 
+                   RowBox[{"ind1", ",", "ind2"}], "]"}], ",", 
                   RowBox[{"{", "Manifold", "}"}], ",", 
                   RowBox[{"Symmetric", "[", 
                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"-", "ind1"}], ",", 
-                    RowBox[{"-", "ind2"}]}], "}"}], "]"}], ",", 
+                    RowBox[{"ind1", ",", "ind2"}], "}"}], "]"}], ",", 
                   RowBox[{"OrthogonalTo", "\[Rule]", 
                    RowBox[{"{", 
                     RowBox[{
-                    RowBox[{"u", "[", "ind1", "]"}], ",", 
-                    RowBox[{"u", "[", "ind2", "]"}]}], "}"}]}], ",", 
+                    RowBox[{"u", "[", 
+                    RowBox[{"-", "ind1"}], "]"}], ",", 
+                    RowBox[{"u", "[", 
+                    RowBox[{"-", "ind2"}], "]"}]}], "}"}]}], ",", 
                   RowBox[{"ProjectedWith", "\[Rule]", 
                    RowBox[{"{", 
                     RowBox[{
                     RowBox[{"h", "[", 
-                    RowBox[{"ind1", ",", 
-                    RowBox[{"-", "ind4"}]}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"-", "ind1"}], ",", "ind4"}], "]"}], ",", 
                     RowBox[{"h", "[", 
-                    RowBox[{"ind2", ",", 
-                    RowBox[{"-", "ind5"}]}], "]"}]}], "}"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"-", "ind2"}], ",", "ind5"}], "]"}]}], "}"}]}], 
+                  ",", 
                   RowBox[{"PrintAs", "\[Rule]", 
                    RowBox[{"StringJoin", "[", "\"\<N\>\"", 
                     RowBox[{"(*", 
@@ -15036,7 +15044,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"MyChangeChristoffel", "[", 
        RowBox[{"#1", ",", "#2", ",", "cd1"}], "]"}], "&"}], ",", "expr", ",", 
-     "cd2list"}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
+     "cd2list"}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"MyChangeChristoffel", "[", 
    RowBox[{"expr_", ",", "cd2_", ",", "cd1_"}], "]"}], ":=", 
@@ -15282,7 +15290,8 @@ Cell[BoxData[{
                  RowBox[{"(", 
                   RowBox[{"Christoffel", "@", "cd2"}], ")"}], "[", 
                  RowBox[{"i1", ",", "i2", ",", "i3"}], "]"}]}]}], "]"}]}], 
-            ",", "\[IndentingNewLine]", 
+            ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
             RowBox[{"RuleDelayed", "@@", 
              RowBox[{"Hold", "[", 
               RowBox[{
@@ -15302,12 +15311,42 @@ Cell[BoxData[{
                   RowBox[{"confa2", "^", 
                    RowBox[{"DimOfManifold", "[", "M", "]"}]}], ".", " ", 
                   "Thanks"}], " ", "to", " ", "Leo", " ", 
-                 RowBox[{"Stein", "."}]}], "*)"}], 
-               RowBox[{
-                RowBox[{"(", 
-                 RowBox[{"Determinant", "[", 
-                  RowBox[{"metric2", ",", "AIndex"}], "]"}], ")"}], "[", 
-                "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"Stein", "."}]}], "*)"}], "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", 
+                RowBox[{
+                "We", " ", "must", " ", "distinguish", " ", "if", " ", "we", 
+                 " ", "use", " ", "conformal", " ", "or", " ", "cosmic", " ", 
+                 
+                 RowBox[{"time", ".", " ", "Modified"}], " ", "on", " ", "04",
+                  " ", "March", " ", "2019", " ", "following", " ", "Obinna", 
+                 " ", 
+                 RowBox[{"Umeh", "'"}], "s", " ", "remark"}], "*)"}], 
+               "\[IndentingNewLine]", 
+               RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"Determinant", "[", 
+                   RowBox[{"metric2", ",", "AIndex"}], "]"}], ")"}], "[", 
+                 "]"}], "*)"}], 
+               RowBox[{"(*", 
+                RowBox[{"Previous", " ", "code", " ", "commented"}], "*)"}], 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"$ConformalTime", "\[Equal]", "False"}], ",", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"Determinant", "[", 
+                    RowBox[{"metric2", ",", "AIndex"}], "]"}], ")"}], "[", 
+                   "]"}], "/", "confa2"}], ",", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"Determinant", "[", 
+                    RowBox[{"metric2", ",", "AIndex"}], "]"}], ")"}], "[", 
+                  "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", "]"}]}], ",", "\[IndentingNewLine]", 
             "\[IndentingNewLine]", 
             RowBox[{"(*", " ", 
              RowBox[{
@@ -15477,7 +15516,7 @@ since we do not know very well how to handle that. **\>\"", "]"}], ";"}]}],
                 "]"}], ";", "\[IndentingNewLine]", "res"}]}], 
              "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
          "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
-     "\[IndentingNewLine]", "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -16073,6 +16112,15 @@ Cell["\<\
 2.7 From conformal time derivatives to cosmic time derivatives\
 \>", "Subsubsection"],
 
+Cell["\<\
+A bug (fixed) was raised by Michael Kopp on April 2018. The formulas to go to \
+Cosmic time and then to Conformal time are not invariant when applied to \
+H[h][LI[0],LI[1]]
+The formula to go to cosmic time was correct, but not the one to go to \
+conformal time (because in practice it is never used, the bug was never seen \
+before).\
+\>", "Text"],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{
@@ -16212,9 +16260,10 @@ Cell[BoxData[{
                    RowBox[{"LI", "[", 
                     RowBox[{"q_", "?", "IntegerQ"}], "]"}], ",", "inds___"}], 
                   "]"}], "\[RuleDelayed]", 
-                 RowBox[{"ToCanonical", "[", 
-                  RowBox[{
-                   RowBox[{"Nest", "[", 
+                 RowBox[{"(", 
+                  RowBox[{"ToCanonical", "[", 
+                   RowBox[{
+                    RowBox[{"Nest", "[", 
                     RowBox[{
                     RowBox[{
                     RowBox[{
@@ -16226,9 +16275,9 @@ Cell[BoxData[{
                     RowBox[{"LI", "[", "p", "]"}], ",", 
                     RowBox[{"LI", "[", "0", "]"}], ",", "inds"}], "]"}], ",", 
                     "q"}], "]"}], ",", 
-                   RowBox[{"UseMetricOnVBundle", "\[Rule]", "None"}]}], 
-                  "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}]}]}]}], ";", 
-         "\[IndentingNewLine]", 
+                    RowBox[{"UseMetricOnVBundle", "\[Rule]", "None"}]}], 
+                   "]"}], ")"}]}]}], "\[IndentingNewLine]", "]"}]}]}]}]}]}], 
+         ";", "\[IndentingNewLine]", 
          RowBox[{"(*", 
           RowBox[{
            RowBox[{"$ConformalTime", "=", "True"}], ";"}], "*)"}], 
@@ -16305,11 +16354,21 @@ Cell[BoxData[{
                   RowBox[{"ToCanonical", "[", 
                    RowBox[{
                     RowBox[{"Nest", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "It", " ", "is", " ", "this", " ", "factor", " ", "of", 
+                    " ", 
+                    RowBox[{"1", "/", "a"}], " ", "which", " ", "was", " ", 
+                    "forgotten"}], " ", "*)"}], 
                     RowBox[{
                     RowBox[{
+                    RowBox[{
+                    RowBox[{"1", "/", 
+                    RowBox[{
+                    RowBox[{"a", "[", "h", "]"}], "[", "]"}]}], 
                     RowBox[{
                     RowBox[{"LieD", "[", 
-                    RowBox[{"n", "[", "i1", "]"}], "]"}], "[", "#", "]"}], 
+                    RowBox[{"n", "[", "i1", "]"}], "]"}], "[", "#", "]"}]}], 
                     "&"}], ",", 
                     RowBox[{
                     RowBox[{"1", "/", 
@@ -16334,11 +16393,22 @@ Cell[BoxData[{
                  RowBox[{"ToCanonical", "[", 
                   RowBox[{
                    RowBox[{"Nest", "[", 
+                    RowBox[{"(*", 
+                    RowBox[{
+                    "It", " ", "is", " ", "this", " ", "factor", " ", "of", 
+                    " ", 
+                    RowBox[{"1", "/", "a"}], " ", "which", " ", "was", " ", 
+                    "forgotten", " ", "and", " ", "lead", " ", "to", " ", 
+                    "the", " ", "bug"}], " ", "*)"}], 
                     RowBox[{
                     RowBox[{
+                    RowBox[{
+                    RowBox[{"1", "/", 
+                    RowBox[{
+                    RowBox[{"a", "[", "h", "]"}], "[", "]"}]}], 
                     RowBox[{
                     RowBox[{"LieD", "[", 
-                    RowBox[{"n", "[", "i1", "]"}], "]"}], "[", "#", "]"}], 
+                    RowBox[{"n", "[", "i1", "]"}], "]"}], "[", "#", "]"}]}], 
                     "&"}], ",", 
                     RowBox[{
                     RowBox[{"1", "/", 
@@ -16373,10 +16443,11 @@ Cell[BoxData[{
                   RowBox[{"LI", "[", 
                    RowBox[{"q_", "?", "IntegerQ"}], "]"}], ",", "inds___"}], 
                  "]"}], "\[RuleDelayed]", 
-                RowBox[{"ToCanonical", "[", 
-                 RowBox[{
-                  RowBox[{"Nest", "[", 
-                   RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"ToCanonical", "[", 
+                  RowBox[{
+                   RowBox[{"Nest", "[", 
+                    RowBox[{
                     RowBox[{
                     RowBox[{
                     RowBox[{"1", "/", 
@@ -16391,8 +16462,8 @@ Cell[BoxData[{
                     RowBox[{"LI", "[", "p", "]"}], ",", 
                     RowBox[{"LI", "[", "0", "]"}], ",", "inds"}], "]"}], ",", 
                     "q"}], "]"}], ",", 
-                  RowBox[{"UseMetricOnVBundle", "\[Rule]", "None"}]}], 
-                 "]"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"UseMetricOnVBundle", "\[Rule]", "None"}]}], "]"}],
+                  ")"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
               "]"}]}]}]}]}]}], ";", "\[IndentingNewLine]", 
         RowBox[{"(*", 
          RowBox[{
@@ -17264,7 +17335,7 @@ Cell[BoxData[
                   "the", " ", "rule", " ", "once", " ", "instead", " ", "of", 
                  " ", "several", " ", "times"}], ",", " ", 
                 RowBox[{
-                "we", " ", "shall", " ", "save", " ", "sone", " ", 
+                "we", " ", "shall", " ", "save", " ", "some", " ", 
                  "computing", " ", 
                  RowBox[{"time", "."}]}]}], " ", "*)"}], 
               "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -17753,8 +17824,9 @@ Cell[BoxData[
              RowBox[{"$DebugInfoQ", ",", 
               RowBox[{
               "Print", "[", 
-               "\"\<Constants of structure opened and simplified. \>\"", "]"}]
-               }], "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               "\"\<Constants of structure opened and simplified. \>\"", 
+               "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
             RowBox[{"CheckSTFTensors", "[", 
              RowBox[{
               RowBox[{"Last", "@", "res"}], ",", "h", ",", 
@@ -19335,7 +19407,7 @@ Cell[BoxData[
  InitializationCell->True],
 
 Cell["\<\
-We gather all the rules for matter below. This function is used in he \
+We gather all the rules for matter below. This function is used in the \
 function which automatize the whole process. Otherwise the user is free to \
 build himself the rules which he thinks should be used for the splitting of \
 the perturbation of matter feld (essentially the velocity).\
@@ -20099,7 +20171,7 @@ Cell[BoxData["\<\"xAct`xPand`Private`\"\>"], "Output"]
 },
 AutoGeneratedPackage->Automatic,
 WindowSize->{1225, 723},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{27, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 ShowSelection->True,
 TrackCellChangeTimes->False,

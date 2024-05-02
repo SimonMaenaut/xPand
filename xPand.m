@@ -19,16 +19,16 @@
 
 
 
-xAct`xPand`$Version={"0.4.3",{2015,09,09}};
+xAct`xPand`$Version={"0.4.3",{2019,03,04}};
 
 
-xAct`xPand`$xTensorVersionExpected={"1.1.2",{2015,8,3}};
-xAct`xPand`$xPertVersionExpected={"1.0.5",{2014,9,28}};
+xAct`xPand`$xTensorVersionExpected={"1.1.3",{2018,2,28}};
+xAct`xPand`$xPertVersionExpected={"1.0.6",{2018,2,28}};
 
 
 (* xPand: Cosmological perturbations about homogeneous space-times *)
 
-(* Copyright (C) 2012-2018 Cyril Pitrou, Xavier Roy and Obinna Umeh *)
+(* Copyright (C) 2012-2019 Cyril Pitrou, Xavier Roy and Obinna Umeh *)
 
 (* This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License as
@@ -61,7 +61,7 @@ You should have received a copy of the GNU General Public License
 
 (* :Package Version: 0.4.3 *)
 
-(* :Copyright: Cyril Pitrou, Xavier Roy and Obinna Umeh (2012-2016) *)
+(* :Copyright: Cyril Pitrou, Xavier Roy and Obinna Umeh (2012-2019) *)
 
 (* :History: see xPand.History *)
 
@@ -376,7 +376,7 @@ nt::usage = "nt[h][index,index] is the symmetric tensor part involved in the dec
 
 The command nt[h] builds the symbol 'nth', so one can use nt[h][index,index] or, equivalently, nth[index,index]. 
 
-The default printed form of nt[h][-index,-index] is: '\!\(\*SubscriptBox[\(N\), \(index\\\ index\)]\)'.";
+The default printed form of nt[h][i,i] is: '\!\(\*SuperscriptBox[\(N\), \(ii\)]\)'.";
 
 av::usage = "av[h][index] is the 'vector' part involved in the decomposition of the constants of structure: \!\(\*SubscriptBox[SuperscriptBox[\(C\), \(i\)], \(\(jk\)\(\\\ \)\)]\)= \!\(\*SubscriptBox[\(\[Epsilon]\), \(jkl\)]\)\!\(\*SuperscriptBox[\(N\), \(li\)]\) + \!\(\*SubscriptBox[\(A\), \([j\)]\)\!\(\*SubscriptBox[SuperscriptBox[\(\[Delta]\), \(i\)], \(\(k\)\(]\)\)]\), in Ellis & MacCallum (1969). It is automatically defined when calling the function SetSlicing for Bianchi space-times of type other than I. The presence as an argument of the induced metric 'h' is reminiscent of the choice of the background slicing.
 
@@ -1811,7 +1811,8 @@ DefTensor[CSh[-ind1,-ind2,-ind3],{Manifold},Antisymmetric[{-ind2,-ind3}],Orthogo
 
 If[Not[FlatSpaceBool[SpaceTimeType]&&dim===4&&BianchiBool[SpaceTimeType]],
 
-DefTensor[nth[-ind1,-ind2],{Manifold},Symmetric[{-ind1,-ind2}],OrthogonalTo->{u[ind1],u[ind2]},ProjectedWith->{h[ind1,-ind4],h[ind2,-ind5]},PrintAs->StringJoin["N"(*,ToString[h]*)]] ;
+(* I have exchanged the position of indices with up. Did not check if this works. 10 march 2019. To check TODO.*)
+DefTensor[nth[ind1,ind2],{Manifold},Symmetric[{ind1,ind2}],OrthogonalTo->{u[-ind1],u[-ind2]},ProjectedWith->{h[-ind1,ind4],h[-ind2,ind5]},PrintAs->StringJoin["N"(*,ToString[h]*)]] ;
 
 DefTensor[avh[-ind1],{Manifold},OrthogonalTo->{u[ind1]},ProjectedWith->{h[ind1,-ind4]},PrintAs->StringJoin["A"(*,ToString[h]*)]] ;
 
@@ -2384,7 +2385,15 @@ res=
 RuleDelayed@@Hold[ConfHead[metric1,metric2][(Ricci@cd1)[i1_,i2_]],confa^(WeightOfIndicesList[{i1,i2}]-2)(Ricci@cd2)[i1,i2]],
 RuleDelayed@@Hold[ConfHead[metric1,metric2][(RicciScalar@cd1)[]],(RicciScalar@cd2)[]],
 RuleDelayed@@Hold[ConfHead[metric1,metric2][(Christoffel@cd1)[i1_,i2_,i3_]],confa^(WeightOfIndicesList[{i1,i2,i3}]-1)*(Christoffel@cd2)[i1,i2,i3]],
-RuleDelayed@@Hold[ConfHead[metric1,metric2][(Determinant[metric1,AIndex])[]],(* This is removed because now xTensor is patched confa2^DimOfManifold[M]. Thanks to Leo Stein.*)(Determinant[metric2,AIndex])[]],
+
+
+RuleDelayed@@Hold[ConfHead[metric1,metric2][(Determinant[metric1,AIndex])[]],(* This is removed because now xTensor is patched confa2^DimOfManifold[M]. Thanks to Leo Stein.*)
+
+(* We must distinguish if we use conformal or cosmic time. Modified on 04 March 2019 following Obinna Umeh's remark*)
+(*(Determinant[metric2,AIndex])[]*)(*Previous code commented*)
+If[$ConformalTime==False,(Determinant[metric2,AIndex])[]/confa2,(Determinant[metric2,AIndex])[]]
+
+],
 
 (* This line below is not working well.  The problem should be considered later when xTensor knows how to handle the epsilon of a frozen metric. So this really works only when metric1 is the ambient metric... *)
 RuleDelayed@@Hold[ConfHead[metric1,metric2][(epsilon@metric1)[inds__?(Length[{#}]===DimOfManifold[M]&)]],(*confa2^(DimOfManifold[M]/2)*)confa^(WeightOfIndicesList[{inds}])(epsilon@metric1)[inds]],
@@ -2549,7 +2558,7 @@ exprtemp
 
 /.K[h][LI[0],LI[q_?IntegerQ],i1_,i2_]:>ToCanonical[Nest[LieD[n[i1]][#]&,a[h][]K[h][LI[0],LI[0],i1,i2],q],UseMetricOnVBundle->None]
 
-/.tens_?((DefProjectedTensorQ[#,h]&&#=!=K[h]&&#=!=a[h]&&#=!=H[h])&)[LI[p_],LI[q_?IntegerQ],inds___]:>ToCanonical[Nest[LieD[n[i1]][#]&,tens[LI[p],LI[0],inds],q],UseMetricOnVBundle->None]
+/.tens_?((DefProjectedTensorQ[#,h]&&#=!=K[h]&&#=!=a[h]&&#=!=H[h])&)[LI[p_],LI[q_?IntegerQ],inds___]:>(ToCanonical[Nest[LieD[n[i1]][#]&,tens[LI[p],LI[0],inds],q],UseMetricOnVBundle->None])
 ];
 (*$ConformalTime=True;*)
 res
@@ -2568,11 +2577,11 @@ exprtemp=expr(*/.Tens_?((DefProjectedTensorQ[#,h])&)[LI[p_],LI[q_],inds___]\[Rul
 
 res=PostProcess[h]@NoScalar@SameDummies@ToCanonical@ContractMetric[
 exprtemp
-/.H[h][LI[0],LI[q_?IntegerQ]]:>ToCanonical[Nest[LieD[n[i1]][#]&,1/a[h][]*H[h][LI[0],LI[0]],q],UseMetricOnVBundle->None]
+/.H[h][LI[0],LI[q_?IntegerQ]]:>ToCanonical[Nest[(*It is this factor of 1/a which was forgotten *)1/a[h][]LieD[n[i1]][#]&,1/a[h][]*H[h][LI[0],LI[0]],q],UseMetricOnVBundle->None]
 
-/.K[h][LI[0],LI[q_?IntegerQ],i1_,i2_]:>ToCanonical[Nest[LieD[n[i1]][#]&,1/a[h][]K[h][LI[0],LI[0],i1,i2],q],UseMetricOnVBundle->None]
+/.K[h][LI[0],LI[q_?IntegerQ],i1_,i2_]:>ToCanonical[Nest[(*It is this factor of 1/a which was forgotten and lead to the bug *)1/a[h][]LieD[n[i1]][#]&,1/a[h][]K[h][LI[0],LI[0],i1,i2],q],UseMetricOnVBundle->None]
 
-/.tens_?((DefProjectedTensorQ[#,h]&&#=!=K[h]&&#=!=a[h]&&#=!=H[h])&)[LI[p_],LI[q_?IntegerQ],inds___]:>ToCanonical[Nest[1/a[h][]LieD[n[i1]][#]&,tens[LI[p],LI[0],inds],q],UseMetricOnVBundle->None]
+/.tens_?((DefProjectedTensorQ[#,h]&&#=!=K[h]&&#=!=a[h]&&#=!=H[h])&)[LI[p_],LI[q_?IntegerQ],inds___]:>(ToCanonical[Nest[1/a[h][]LieD[n[i1]][#]&,tens[LI[p],LI[0],inds],q],UseMetricOnVBundle->None])
 
 ];
 (*$ConformalTime=False;*)
@@ -2688,7 +2697,7 @@ With[{CD=CovDOfMetric[g],cd=CovDOfMetric[h],M=ManifoldOfCovD@CovDOfMetric[g]},
 With[{CDmax=MaxDerOrder[expr,CD,First@replacerule]},
 
 (* In this function we will precompute the rules for the CovDs of tensor for which the rule is given in the argument replacerule.
-For instance if we compute the perturbation of the Ricci tensor, there will be several terms with two covariant derivatives of the perturbed metric. By precomputing the rule once instead of several times, we shall save sone computing time. *)
+For instance if we compute the perturbation of the Ricci tensor, there will be several terms with two covariant derivatives of the perturbed metric. By precomputing the rule once instead of several times, we shall save some computing time. *)
 
 dummiesup=DummyIn/@Table[Tangent[M],{Range[CDmax]}];
 dummiesdown=ChangeIndex/@dummiesup;
